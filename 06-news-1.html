@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 语法</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #0d6efd;
+            text-align: center;
+            padding: 20px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        h1:hover {
+            background-color: #dee2e6;
+        }
+
+        #demo {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #demo:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+    <script>
+        // 类和对象
+        class Car {
+            constructor(brand, model, year) {
+                this.brand = brand
+                this.model = model
+                this.year = year
+            }
+            start() {
+                console.log(`汽车 ${this.brand} ${this.model} 启动了`)
+            }
+            stop() {
+                console.log(`汽车 ${this.brand} ${this.model} 停止了`)
+            }
+        }
+        let myCar = new Car('Mi', 'Yu7', 2025)
+        myCar.start()
+        myCar.stop()
+
+        class ElectricCar extends Car {
+            constructor(brand, model, year, range) {
+                super(brand, model, year)
+                this.range = range
+            }
+            charge() {
+                console.log(`电动汽车 ${this.brand} ${this.model} 正在充电`)
+            }
+        }
+        let myElectricCar = new ElectricCar('Tesla', 'Model Y', 2025, 300)
+        myElectricCar.start()
+        myElectricCar.charge()
+
+        // 回调函数练习
+        console.log('111111')
+
+        setTimeout(function () {
+            console.log('22222')
+        }, 2000)
+
+        console.log('333333')
+    </script>
+</head>
+
+<body>
+    <h1 onclick="alert('我被点击了！')">JavaScript 语法</h1>
+    <div id="demo">这是从脚本动态更改的内容</div>
+</body>
+
+<script>
+    myDom = document.getElementById('demo')
+    console.log(myDom)
+    myDom.onclick = function () {
+        alert('我也被点击了！')
+    }
+</script>
+</html>
