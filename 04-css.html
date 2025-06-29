@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动物科普</title>
+    <style>
+        /* 全局样式 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            /* 背景设置：使用渐变背景 */
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            color: #333;
+        }
+
+        /* 头部样式 */
+        header {
+            /* 背景设置：使用图片和渐变叠加 */
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5em 0;
+            /* 动画：淡入效果 */
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            margin: 0.5em 0 0;
+            font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background-color: #333;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            padding: 1em;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+
+        /* 主内容区域样式 */
+        main {
+            padding: 2em;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            /* 布局：使用网格布局 */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 2em;
+        }
+
+        /* 动物卡片样式 */
+        .animal-card {
+            /* 盒模型：设置边框、内边距、外边距等 */
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            /* 动画：缩放效果 */
+            transition: transform 0.3s ease;
+        }
+
+        .animal-card:hover {
+            transform: scale(1.05);
+        }
+
+        .animal-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .animal-info {
+            padding: 1.5em;
+        }
+
+        .animal-info h2 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        /* 脚部样式 */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>动物科普世界</h1>
+        <p>探索奇妙的动物王国</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">全部</a></li>
+            <li><a href="#">哺乳动物</a></li>
+            <li><a href="#">鸟类</a></li>
+            <li><a href="#">爬行动物</a></li>
+            <li><a href="#">两栖动物</a></li>
+        </ul>
+    </nav>
+    <main>
+        <article class="animal-card">
+            <img src="4bcf26401dce9f34.jpg" alt="狮子">
+            <div class="animal-info">
+                <h2>狮子</h2>
+                <p>狮子是大型猫科动物，是草原之王。它们通常群居生活，以捕食其他动物为生。狮子具有强大的力量和敏捷的身手，是优秀的猎手。</p>
+            </div>
+        </article>
+        <article class="animal-card">
+            <img src="9cf50d37a6bffa75.jpg" alt="老鹰">
+            <div class="animal-info">
+                <h2>老鹰</h2>
+                <p>老鹰是猛禽的代表，拥有锐利的眼睛和强壮的翅膀。它们在空中翱翔，能够迅速发现猎物并进行精准的攻击。老鹰是天空中的霸主。</p>
+            </div>
+        </article>
+        <article class="animal-card">
+            <img src="蛇.jpg" alt="蛇">
+            <div class="animal-info">
+                <h2>蛇</h2>
+                <p>蛇是一种爬行动物，身体细长，没有四肢。它们以特殊的肌肉运动方式爬行，多数蛇类是肉食性动物，通过嗅觉和热感应来追踪猎物。</p>
+            </div>
+        </article>
+        <article class="animal-card">
+            <img src="娃.jpg" alt="青蛙">
+            <div class="animal-info">
+                <h2>青蛙</h2>
+                <p>青蛙属于两栖动物，皮肤湿润光滑。它们幼年时生活在水中，用鳃呼吸，成年后水陆两栖，用肺呼吸。青蛙以昆虫为食，是庄稼的保护者。</p>
+            </div>
+        </article>
+        <article class="animal-card">
+            <img src="海豚.jpg" alt="海豚">
+            <div class="animal-info">
+                <h2>海豚</h2>
+                <p>海豚是水生哺乳动物，具有非常高的智力。它们身体呈流线型，游泳速度快，常通过发出超声波进行交流和定位猎物。</p>
+            </div>
+        </article>
+        <article class="animal-card">
+            <img src="长颈鹿.jpg" alt="长颈鹿">
+            <div class="animal-info">
+                <h2>长颈鹿</h2>
+                <p>长颈鹿是世界上现存最高的陆生动物，它们拥有长长的脖子和四条长腿。主要以树叶和嫩枝为食，通过长舌头灵活地摘取食物。</p>
+            </div>
+        </article>
+    </main>
+    <footer>
+        <p>&copy; 2025 动物科普网</p>
+    </footer>
+</body>
+
+</html>
