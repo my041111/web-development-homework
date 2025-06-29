@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>诗意定位</title>
+    <style type="text/css">
+        body {
+            width: 960px;
+            margin: 0 auto;
+            font-family: '微软雅黑', sans-serif;
+            font-size: 18px;
+            line-height: 1.8em;
+            background-color: #f5f5f5;
+        }
+        div {
+            width: 300px;
+            float: left;
+            margin: 10px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .relative {
+            position: relative;
+            top: 150px;
+        }
+        .absolute {
+            position: absolute;
+            top: 150px;
+            left: 0;
+        }
+        .bg {
+            background-color: #fcc;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #555;
+            margin: 10px 0;
+        }
+        code {
+            display: block;
+            background-color: #f5f5f5;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>自然之美</h2>
+        <p>春风又绿江南岸，</p>
+        <p>明月何时照我还。</p>
+        <p class="bg">山重水复疑无路，</p>
+        <p>柳暗花明又一村。</p>
+        <p>采菊东篱下，悠然见南山。</p>
+    </div>
+    <div>
+        <h2>相对之美</h2>
+        <p>大漠孤烟直，</p>
+        <p>长河落日圆。</p>
+        <p class="bg relative">会当凌绝顶，</p>
+        <p>一览众山小。</p>
+        <p>海内存知己，天涯若比邻。</p>
+        <code>.relative { position: relative; top:150px;}</code>
+    </div>
+    <div>
+        <h2>绝对之美</h2>
+        <p>床前明月光，</p>
+        <p>疑是地上霜。</p>
+        <p class="bg absolute">举头望明月，</p>
+        <p>低头思故乡。</p>
+        <p>欲穷千里目，更上一层楼。</p>
+        <code>.absolute { position: absolute; top:150px; left:0;} </code>
+    </div>
+</body>
+</html>
