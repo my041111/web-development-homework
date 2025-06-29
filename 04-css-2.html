@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 练习2</title>
+    <style>
+        body {
+            background-color: #87CEEB; /* 天空蓝 */
+            font-family: '微软雅黑', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            background-image: url("./images/780.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            color: white;
+            padding: 100px 0;
+            margin: -20px -20px 20px -20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        h2 {
+            color: #444;
+            border-bottom: 2px solid #cc6666;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #cc6666;
+            padding: 20px;
+            margin: 3em auto;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 40px;
+        }
+        li {
+            margin: 10px 0;
+        }
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .flex-container p {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        .flex-container p:hover {
+            transform: translateX(10px);
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+        }
+        .phonetic {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS基础知识：背景、盒模型、布局、动画</h1>
+    
+    <h2>CSS 背景</h2>
+    <div>
+        "cascading" <span class="phonetic">/kæˈskeɪdɪŋ/</span> 是CSS的核心概念之一。背景属性可以让我们为元素添加丰富的视觉效果，包括背景颜色、图片、渐变等。
+    </div>
+    
+    <h2>CSS 盒模型</h2>
+    <div class="box">
+        盒模型是 CSS 布局的基石，它定义了元素在页面上的位置和大小。在 CSS 中，每个元素都被看作是一个矩形的盒子，这个盒子由内容、内边距、边框和外边距组成。理解盒模型对于掌握CSS布局至关重要。
+    </div>
+    
+    <h2>信息流、display以及position</h2>
+    <ul>
+        <li>正常文档流（Normal Flow）</li>
+        <li>浮动（Float）布局</li>
+        <li>定位（Position）布局</li>
+    </ul>
+    <ul>
+        <li style="display: inline">行内元素（Inline）</li>
+        <li style="display: inline">块级元素（Block）</li>
+        <li style="display: inline">行内块元素（Inline-block）</li>
+        <li style="display: none">隐藏元素（None）</li>
+    </ul>
+    
+    <h2>Flex布局</h2>
+    <div class="flex-container">
+        <p>Flexbox是一种一维布局模型，可以轻松实现各种复杂的布局需求。</p>
+        <p>它提供了更有效的方式来分配容器内项目的空间和对齐方式。</p>
+        <p>Flex布局特别适合构建响应式设计，可以自动调整项目的大小和位置。</p>
+    </div>
+</body>
+</html>
