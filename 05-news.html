@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 核心语法学习</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .code-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .output-section {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .output-section h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JavaScript 核心语法学习</h1>
+        
+        <div class="code-section">
+            <h2>基础语法演示</h2>
+            <pre><code>
+// 变量声明与类型检测
+let a = 100;
+const api_key = 'ssssx-=-dddd';
+console.log(`变量a的值：${a}, 类型：${typeof a}`);
+console.log(`常量api_key的值：${api_key}, 类型：${typeof api_key}`);
+
+// 类型转换与比较
+let b = '1';
+console.log(`字符串与数字相加：${a + b}`);
+console.log(`类型转换后相加：${a + Number(b)}`);
+
+// 严格比较
+let c = '100';
+console.log(`== 比较结果：${a == c}`);
+console.log(`=== 比较结果：${a === c}`);
+
+// 条件语句
+let current_time = '12:20';
+if (current_time == '12:20') {
+    console.log('冲啊！');
+} else {
+    console.log('假装学习……');
+}
+
+// 循环语句
+console.log('for循环输出：');
+for (let i = 1; i <= 10; i++) {
+    console.log(i);
+}
+
+console.log('while循环输出：');
+let hug = 60;
+while (hug > 0) {
+    console.log('继续干饭……');
+    hug -= 10;
+}
+
+// 函数定义与使用
+function intro() {
+    console.log('你好，我是一个脚本！');
+}
+intro();
+
+function intro2(content) {
+    console.log(`以下是我介绍的内容：${String(content)}`);
+}
+intro2('这是传入的参数');
+
+function intro3(content1, content2) {
+    console.log(`以下是我介绍的内容：${String(content1)} ${String(content2)}`);
+}
+intro3('参数1', '参数2');
+
+function intro4(content) {
+    console.log(content);
+    return content + '这是返回值';
+}
+let result = intro4('带返回值的函数');
+console.log(`函数返回值：${result}`);
+            </code></pre>
+        </div>
+
+        <div class="output-section">
+            <h3>控制台输出</h3>
+            <div id="console-output"></div>
+        </div>
+
+        <div class="btn" onclick="runCode()">运行代码</div>
+    </div>
+
+    <script>
+        // 重写console.log方法，将输出显示在页面上
+        (function(){
+            const oldLog = console.log;
+            const outputDiv = document.getElementById('console-output');
+            
+            console.log = function(message) {
+                oldLog.apply(console, arguments);
+                const p = document.createElement('p');
+                p.textContent = message;
+                outputDiv.appendChild(p);
+            };
+        })();
+
+        function runCode() {
+            // 清空之前的输出
+            document.getElementById('console-output').innerHTML = '';
+            
+            // 重新执行代码
+            // ... existing code ...
+        }
+    </script>
+</body>
+</html>
