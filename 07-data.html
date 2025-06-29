@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 异步编程练习2</title>
+</head>
+
+<body>
+    <h1>JavaScript 异步编程练习</h1>
+    <div id="demo">
+
+    </div>
+    <script>
+        setTimeout(() => {
+            console.log('111')
+        }, 2000)
+        console.log('222')
+
+        function getSomething() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log('1111')
+                    resolve();
+                }, 1000)
+            })
+        }
+        getSomething().then(() => {
+            console.log('2222')
+        })
+
+        async function getSomething2() {
+            await new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log('111111')
+                    resolve();
+                }, 1000)
+            });
+        }
+
+        (async () => {
+            await getSomething2();
+            console.log('222222');
+        })();
+
+        async function getAllCommitDates(owner, repo) {
+            const url = `https://api.github.com/repos/${owner}/${repo}/commits`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('网络响应失败');
+                }
+                const commits = await response.json();
+                // 提取每个提交的日期
+                const dates = commits.map(commit => commit.commit.author.date);
+                return dates;
+            } catch (error) {
+                console.error('获取提交日期失败:', error);
+                return [];
+            }
+        }
+
+        // 示例调用
+        // getAllCommitDates('my041111', 'Web-develop').then(dates => {
+        //     console.log('所有提交日期:', JSON.stringify(dates));
+        // });
+        function showCommitDatesTable(dates) {
+            let html = '<table border="1" cellpadding="5"><tr><th>序号</th><th>提交日期</th></tr>';
+            dates.forEach((date, idx) => {
+                html += `<tr><td>${idx + 1}</td><td>${date}</td></tr>`;
+            });
+            html += '</table>';
+            document.getElementById('demo').innerHTML = html;
+        }
+
+        getAllCommitDates('yangjh-xbmu', 'Web-develop')
+            .then(dates => {
+                console.log('所有提交日期:', JSON.stringify(dates));
+                showCommitDatesTable(dates);
+            });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
