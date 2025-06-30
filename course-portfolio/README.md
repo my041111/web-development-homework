@@ -82,3 +82,196 @@
 - 查看仓库的提交历史
 
 ![GitHub仓库管理界面](/screenshots/github-repos.png)
+
+### 4.2 仓库创建
+
+- 提供表单创建新的 GitHub 仓库
+- 支持设置仓库名称、描述、可见性等属性
+- 可选择是否初始化 README 文件
+
+### 4.3 代码提交
+
+- 支持向指定仓库提交代码文件
+- 提供文件内容编辑器
+- 支持添加提交信息
+
+### 4.4 错误处理
+
+- 完善的错误处理机制，特别是针对 API 限流（403）错误
+- 友好的错误提示，帮助用户理解问题并提供解决方案
+
+## 5. Next.js 项目结构与旧作业整合
+
+项目遵循 Next.js App Router 的标准目录结构，并通过特定的路由组织整合了旧的练习作业。
+
+### 5.1 项目目录结构
+
+```
+/
+├── app/                    # App Router 的根目录
+│   ├── api/               # API 路由目录
+│   │   ├── qanything/    # QAnything API 路由
+│   │   │   └── route.js  # API 路由处理文件
+│   │   └── wakatime/     # WakaTime API 路由
+│   │       └── route.js  # API 路由处理文件
+│   ├── qanything/        # QAnything 页面
+│   │   ├── page.js       # QAnything 页面组件
+│   │   └── qanything-chat.css # 聊天界面样式
+│   ├── wakatime/         # WakaTime 页面
+│   │   └── page.js       # WakaTime 页面组件
+│   ├── github/           # GitHub 集成页面
+│   │   └── page.js       # GitHub 页面组件
+│   ├── exercises/        # 练习展示页面
+│   │   ├── layout.js     # 练习页面布局
+│   │   ├── page.js       # 练习展示页面组件
+│   │   ├── css-styling/  # CSS 练习
+│   │   ├── html-basics/  # HTML 练习
+│   │   ├── js-interaction/ # JavaScript 练习
+│   │   ├── react-components/ # React 组件练习
+│   │   ├── nextjs-routing/ # Next.js 路由练习
+│   │   └── web-homework/ # 旧作业整合目录
+│   │       ├── 01-web/   # Web 基础作业
+│   │       ├── 03-css/   # CSS 作业
+│   │       ├── 05-news/  # 新闻页面作业
+│   │       └── 06-news/  # 进阶新闻页面作业
+│   ├── globals.css       # 全局样式文件
+│   ├── layout.js         # 根布局组件
+│   └── page.js           # 首页组件
+├── components/           # 共享组件目录
+│   ├── GitHubCommitCreator.js # GitHub 提交组件
+│   ├── GitHubRepoCreator.js # GitHub 仓库创建组件
+│   ├── KaleidoscopeBackground.js # 动态背景组件
+│   ├── QAnythingChat.js # QAnything 聊天组件
+│   └── WakaTimeFooter.js # WakaTime 页脚组件
+├── my-wakatime-worker/   # Cloudflare Worker 项目
+│   ├── src/             # Worker 源代码
+│   │   └── index.js     # Worker 入口文件
+│   └── wrangler.toml    # Worker 配置文件
+├── public/               # 静态资源目录
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── wakatime-logo.svg
+│   └── window.svg
+├── .env.local.example    # 环境变量示例文件
+├── .gitignore            # Git 忽略文件
+├── next.config.js        # Next.js 配置文件
+├── package.json          # 项目依赖配置
+├── postcss.config.js     # PostCSS 配置
+└── tailwind.config.js    # Tailwind CSS 配置
+```
+
+### 5.2 旧作业整合方法
+
+我们通过 Next.js 的文件系统路由功能，将之前完成的各类作业整合到了统一的平台中：
+
+1. **路由组织**：在 `app/exercises/web-homework/` 目录下，按照作业类型和编号创建子目录，每个子目录包含一个 `page.js` 文件作为该作业的入口。
+
+2. **共享布局**：使用 `app/exercises/layout.js` 为所有练习提供统一的导航和布局，方便用户在不同练习之间切换。
+
+3. **技术升级**：将原本的静态 HTML/CSS/JavaScript 作业改造为 React 组件形式，同时保留原有的功能和样式。
+
+4. **渐进式学习展示**：通过不同作业的组织，展示了从基础 Web 技术到现代前端框架的学习进阶过程。
+
+## 6. 项目功能展示
+
+### 6.1 首页
+
+首页展示了项目的四个主要功能模块：练习展示、QAnything 知识库问答、WakaTime 统计和 GitHub 仓库管理。每个模块都有对应的卡片，点击可以跳转到相应的功能页面。
+
+### 6.2 QAnything 知识库问答
+
+QAnything 知识库问答页面提供了两种模式：
+
+#### 基础路径模式
+
+通过 iframe 直接嵌入官方 QAnything 对话界面，简单直接。用户可以直接在嵌入的界面中与知识库进行对话，无需额外的配置。
+
+#### 进阶路径模式
+
+自定义前端界面，通过 Next.js API 路由调用 QAnything API，实现更灵活的定制化问答体验。特点包括：
+
+- 自定义聊天界面，与整体网站风格一致
+- 支持聊天历史记录和上下文理解
+- 流式响应，实时显示回答内容
+- 显示引用来源和相关度评分
+- 支持清除聊天记录功能
+
+### 6.3 WakaTime 统计
+
+WakaTime 统计页面展示了个人的编程活动统计数据，包括：
+
+- 编程语言分布饼图
+- 每日编码时间柱状图
+- 编辑器使用情况统计
+- 项目工作时间分布
+- 总编码时间和日均编码时间
+
+页脚组件还在全站范围内显示简要的编程语言分布情况，让用户随时了解自己的编程活动。
+
+### 6.4 GitHub 仓库管理
+
+GitHub 仓库管理页面提供了三个主要功能标签：
+
+#### 仓库浏览
+
+- 支持通过用户名搜索 GitHub 仓库
+- 显示仓库列表，包含名称、描述、更新时间等信息
+- 点击仓库可查看其提交历史
+- 支持仓库内容搜索过滤
+
+#### 仓库创建
+
+- 提供表单创建新的 GitHub 仓库
+- 支持设置仓库名称、描述、可见性等属性
+- 可选择是否初始化 README 文件
+- 创建成功后自动刷新仓库列表
+
+#### 代码提交
+
+- 支持向指定仓库提交代码文件
+- 提供文件内容编辑器
+- 支持添加提交信息和路径
+- 提交成功后可查看更新的提交历史
+
+### 6.5 练习展示
+
+练习展示页面列出了所有的 Web 开发练习，包括：
+
+- HTML 基础练习
+- CSS 样式练习
+- JavaScript 交互练习
+- React 组件练习
+- Next.js 路由练习
+- 旧作业项目展示
+
+每个练习都有对应的卡片，点击可以查看详情和实际效果。
+
+![练习展示](/screenshots/练习展示.png)
+
+## 7. 项目运行指南
+
+请按照以下步骤在本地运行本项目：
+
+### 7.1 环境准备
+
+- Node.js 18.0.0 或更高版本
+- npm 或 yarn 包管理器
+- 现代浏览器（Chrome、Firefox、Edge 等）
+- 可选：GitHub 账号（用于 GitHub 集成功能）
+- 可选：WakaTime 账号（用于 WakaTime 统计功能）
+
+![项目运行截图](/screenshots/57295897693c2238b1e8e7e8918700b.png)
+
+### 7.2 安装与配置
+
+1. **克隆仓库**
+```bash
+git clone <your-repository-url>
+cd course-portfolio
+```
+
+2. **安装依赖**
+```bash
+npm install
+```
