@@ -247,8 +247,6 @@ GitHub 仓库管理页面提供了三个主要功能标签：
 
 每个练习都有对应的卡片，点击可以查看详情和实际效果。
 
-![练习展示](/screenshots/练习展示.png)
-
 ## 7. 项目运行指南
 
 请按照以下步骤在本地运行本项目：
@@ -275,3 +273,158 @@ cd course-portfolio
 ```bash
 npm install
 ```
+
+3. **环境变量配置**
+   - 复制 `.env.local.example` 文件为 `.env.local`
+   - 根据需要配置以下环境变量：
+   ```
+   # WakaTime API 配置
+   WAKATIME_API_KEY=your_api_key
+   
+   # QAnything 配置
+   NEXT_PUBLIC_QANYTHING_API_URL=API端点
+   NEXT_PUBLIC_QANYTHING_IFRAME_URL=嵌入页面URL
+   USE_REAL_API=true/false
+   
+   # GitHub 配置（如需使用GitHub功能）
+   GITHUB_TOKEN=your_github_token
+   ```
+
+4. **启动开发服务器**
+```bash
+npm run dev
+```
+
+### 7.3 API 使用说明
+
+#### WakaTime API
+
+WakaTime API在 `/app/api/wakatime/route.js` 中实现。主要功能有：
+
+- 支持不同时间范围: `last_7_days`, `last_30_days`, `last_6_months`, `last_year`, `all_time`
+- 获取总编码时间
+- 获取语言使用统计
+- 获取编辑器使用情况
+- 模拟模式供开发测试
+
+API调用示例:
+```javascript
+// 获取最近30天数据
+fetch('/api/wakatime?range=last_30_days')
+
+// 获取所有时间数据
+fetch('/api/wakatime?range=all_time')
+
+// 使用模拟数据（开发测试用）
+fetch('/api/wakatime?range=last_30_days&mock=true')
+```
+
+##### WakaTime 数据结构
+
+WakaTime API返回的数据结构如下:
+
+```javascript
+{
+  data: {
+    best_day: { date: "2023-05-15", text: "4 hrs 12 mins" },
+    categories: [ ... ],
+    daily_average: 8460,
+    editors: [ ... ],
+    human_readable_daily_average: "2 hrs 21 mins",
+    human_readable_total: "70 hrs 30 mins",
+    languages: [ ... ],
+    operating_systems: [ ... ],
+    total_seconds: 253800
+  },
+  allTimeTotal: { // 仅在range=all_time时存在
+    decimal: "443.00",
+    text: "443 hrs",
+    total_seconds: 1594800,
+    ...
+  }
+}
+```
+
+#### QAnything API
+
+QAnything API在 `/app/api/qanything/route.js` 中实现。
+
+```javascript
+// 提问示例
+const askQuestion = async (question) => {
+  const response = await fetch('/api/qanything', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ question })
+  });
+  
+  const data = await response.json();
+  return data.answer;
+};
+```
+
+### 7.4 开发最佳实践
+
+#### 环境变量管理
+
+1. **开发环境**
+   - 使用 `.env.local` 存储敏感信息
+   - 确保 `.env.local` 已添加到 `.gitignore`
+
+2. **生产环境**
+   - 使用部署平台提供的环境变量管理
+   - 避免在代码中硬编码API密钥
+
+#### API限流考虑
+
+1. **WakaTime API**
+   - 有请求频率限制，开发时使用mock=true参数
+   - 实现本地缓存以减少API调用
+
+2. **QAnything API**
+   - 使用本地模拟响应进行开发和测试
+   - 添加错误处理和重试机制
+
+#### 展示组件设计
+
+1. **保持一致性**
+   - 遵循设计系统和颜色主题
+   - 使用相同的加载状态和错误处理模式
+
+2. **响应式设计**
+   - 确保在移动设备上同样可用
+   - 针对小屏幕优化数据展示
+
+### 7.5 测试
+
+#### 手动测试
+
+1. **WakaTime功能**
+   - 验证不同时间范围的数据加载
+   - 测试模拟数据模式
+   - 验证错误处理
+
+2. **QAnything功能**
+   - 测试基础集成iframe加载
+   - 测试进阶集成问答功能
+   - 验证API错误处理
+
+#### 自动化测试 (推荐添加)
+
+1. **组件测试**
+   - 使用Jest和React Testing Library测试关键组件
+   - 模拟API响应进行测试
+
+2. **API测试**
+   - 验证API路由的响应格式和错误处理
+   - 测试不同参数的处理逻辑
+
+### 7.6 部署
+
+推荐使用Vercel进行部署:
+
+1. 连接GitHub仓库
+2. 配置环境变量
+3. 部署应用
+
+其他平台如Netlify和AWS Amplify也可以使用，确保配置正确的构建命令和环境变量。
