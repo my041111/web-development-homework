@@ -11,7 +11,7 @@
 
 项目前端采用响应式设计，后端逻辑通过 Next.js API Routes 实现，整体体现了现代 Web 开发的"约定优于配置"原则。通过这个项目，展示了从基础 Web 技术到现代前端框架的学习进阶过程。
 
-![项目首页](https://raw.githubusercontent.com/my041111/web-development-homework/main/course-portfolio/public/screenshots/homepage-new.png)
+![项目首页](/course-portfolio/public/screenshots/homepage-new.png)
 
 ## 2. QAnything 集成路径与实现细节
 
@@ -21,11 +21,11 @@
 
 - **基础路径**：通过 iframe 直接嵌入官方 QAnything 对话界面，简单直接，无需额外 API 调用。
 
-![QAnything基础路径](https://raw.githubusercontent.com/my041111/web-development-homework/main/course-portfolio/public/screenshots/qanything-advanced.png)
+![QAnything基础路径](/course-portfolio/public/screenshots/qanything-advanced.png)
 
 - **进阶路径**：自定义前端界面，通过 Next.js API 路由调用 QAnything API，实现更灵活的定制化问答体验。
 
-![QAnything进阶路径](https://raw.githubusercontent.com/my041111/web-development-homework/main/course-portfolio/public/screenshots/qanything-basic.png)
+![QAnything进阶路径](/course-portfolio/public/screenshots/qanything-basic.png)
 
 ### 2.2 实现细节
 
@@ -51,7 +51,7 @@
 - **页脚组件**：`src/components/WakaTimeFooter.js` 是一个轻量级组件，在全站页脚显示简要的编程语言分布情况。
 - **API 路由**：`src/app/api/wakatime/route.js` 处理数据请求，并在 API 不可用时提供备用模拟数据。
 
-![WakaTime统计页面](https://raw.githubusercontent.com/my041111/web-development-homework/main/course-portfolio/public/screenshots/dashboard-wakatime.png)
+![WakaTime统计页面](/course-portfolio/public/screenshots/dashboard-wakatime.png)
 
 ### 3.2 数据中继与实现流程
 
@@ -81,7 +81,7 @@
 - 显示仓库基本信息（名称、描述、更新时间、主要语言等）
 - 查看仓库的提交历史
 
-![GitHub仓库管理界面](https://raw.githubusercontent.com/my041111/web-development-homework/main/course-portfolio/public/screenshots/github-repos.png)
+![GitHub仓库管理界面](/course-portfolio/public/screenshots/github-repos.png)
 
 ### 4.2 仓库创建
 
@@ -259,7 +259,7 @@ GitHub 仓库管理页面提供了三个主要功能标签：
 - 可选：GitHub 账号（用于 GitHub 集成功能）
 - 可选：WakaTime 账号（用于 WakaTime 统计功能）
 
-![项目运行截图](https://raw.githubusercontent.com/my041111/web-development-homework/main/course-portfolio/public/screenshots/57295897693c2238b1e8e7e8918700b.png)
+![项目运行截图](/course-portfolio/public/screenshots/57295897693c2238b1e8e7e8918700b.png)
 
 ### 7.2 安装与配置
 
