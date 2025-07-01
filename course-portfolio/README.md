@@ -25,7 +25,7 @@
 
 - **进阶路径**：自定义前端界面，通过 Next.js API 路由调用 QAnything API，实现更灵活的定制化问答体验。
 
-![QAnything进阶路径](/course-portfolio/public/screenshots/qanything-basic.png)
+![QAnything进阶路径](/course-portfolio/public/screenshots/qanything.png)
 
 ### 2.2 实现细节
 
