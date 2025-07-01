@@ -13,7 +13,7 @@
 
 ![项目首页](/course-portfolio/public/screenshots/homepage-new.png)
 
-![项目首页](/course-portfolio/public/screenshots/homepage-new.png)
+![项目首页](/course-portfolio/public/screenshots/练习展示.png)
 
 ## 2. QAnything 集成路径与实现细节
 
